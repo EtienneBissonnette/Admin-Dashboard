@@ -7,7 +7,7 @@ import Layout from "scenes/layout";
 import Dashboard from "scenes/dasboard";
 
 function App() {
-  const mode = useSelector((state) => state.mode);
+  const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
   return (
@@ -21,10 +21,7 @@ function App() {
                 path="/"
                 element={<Navigate to={"/Dashboard"} replace />}
               />
-              <Route
-                path="/Dashboard"
-                element={<Dashboard/>}
-              />
+              <Route path="/Dashboard" element={<Dashboard />} />
             </Route>
           </Routes>
         </ThemeProvider>
