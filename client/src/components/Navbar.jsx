@@ -18,7 +18,7 @@ import {
   InputBase,
 } from "@mui/material";
 
-function Navbar() {
+function Navbar({isSideBarOpen, setIsSideBarOpen}) {
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -27,13 +27,13 @@ function Navbar() {
       <Toolbar sx={{ justifyContent: "space-between" }}>
         {/* left side */}
         <FlexBetween>
-          <IconButton onClick={() => console.log("Open/Close Side Bar")}>
+          <IconButton onClick={() => setIsSideBarOpen(!isSideBarOpen)}>
             <MenuIcon />
           </IconButton>
           <FlexBetween
             backgroundColor={theme.palette.background.alt}
             borderRadius={"9px"}
-            gap={"1rem"}
+            gap={"3rem"}
             padding={".1rem .3rem"}
           >
             <InputBase placeholder="Search..." />
@@ -44,7 +44,7 @@ function Navbar() {
         </FlexBetween>
 
         {/* right side */}
-        <FlexBetween gap="1.5rem">
+        <FlexBetween gap="1rem">
           <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
               <DarkModeOutlined sx={{ fontSize: "25px" }} />
