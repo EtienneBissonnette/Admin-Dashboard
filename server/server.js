@@ -25,11 +25,16 @@ app.use("/sales", require("./routes/sales"));
 
 const PORT = process.env.PORT || 5000;
 
+//data
+const User = require("./models/User");
+const { dataUser } = require("./data/index");
+
 mongoose
   .connect(process.env.MONGO_URL, {
-    // asNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    app.listen(() => console.log(`Connected to PORT: ${PORT}`));
-  }).catch((err) => console.log(err));
+    // User.insertMany(dataUser) //to import mock user data
+    app.listen(PORT, () => console.log(`Connected to PORT: ${PORT}`));
+  })
+  .catch((err) => console.log(err));
