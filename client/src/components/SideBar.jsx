@@ -94,6 +94,7 @@ const navItems = [
 ];
 
 function SideBar({
+  user,
   drawerWidth,
   isNonMobile,
   isSideBarOpen,
@@ -121,7 +122,7 @@ function SideBar({
             "& .MuiDrawer-paper": {
               color: theme.palette.secondary[400],
               backgroundColor: theme.palette.background.alt,
-              boxSizing: "border-box",
+              boxSixing: "border-box",
               borderWidth: isNonMobile ? 0 : "2px",
               width: drawerWidth,
             },
@@ -167,7 +168,7 @@ function SideBar({
                       onClick={() => {
                         navigate(`/${lcText}`);
                         setActive(lcText);
-                        console.log(active)
+                        console.log(active);
                       }}
                       sx={{
                         backgroundColor:
@@ -200,6 +201,43 @@ function SideBar({
                 );
               })}
             </List>
+          </Box>
+          {/* position="absolute" bottom="2rem" */}
+          <Box position="relative" bottom="1rem"> 
+            <Divider sx={{ margin: "5px 0 0 0" }} />
+            <FlexBetween
+              textTransform="none"
+              gap="1rem"
+              margin="1.5rem 2rem 0rem 1.5rem"
+            >
+              <Box
+                component="img"
+                alt="profile"
+                src={avatar}
+                height="40px"
+                width="40px"
+                borderRadius="50%"
+                sx={{ objectFit: "cover" }}
+              ></Box>
+              <Box textAlign="left">
+                <Typography
+                  fontWeight="bold"
+                  fontSize="0.9rem"
+                  sx={{ color: theme.palette.secondary[100] }}
+                >
+                  {user.name}
+                </Typography>
+                <Typography
+                  fontSize="0.8rem"
+                  sx={{ color: theme.palette.secondary[200] }}
+                >
+                  {user.occupation}
+                </Typography>
+              </Box>
+              <SettingsOutlined
+                  sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
+                />
+            </FlexBetween>
           </Box>
         </Drawer>
       )}
