@@ -27,14 +27,19 @@ const PORT = process.env.PORT || 5000;
 
 //data
 const User = require("./models/User");
-const { dataUser } = require("./data/index");
+const Product = require("./models/Product");
+const ProductStats = require("./models/ProductStats");
+const { dataUser, dataProduct, dataProductStat } = require("./data/index");
 
 mongoose
   .connect(process.env.MONGO_URL, {
     useUnifiedTopology: true,
   })
   .then(() => {
-    // User.insertMany(dataUser) //to import mock user data
+    // User.insertMany(dataUser) //to import mock data
+    // Product.insertMany(dataProduct) //to import mock data
+    // ProductStats.insertMany(dataProductStat) //to import mock data
+
     app.listen(PORT, () => console.log(`Connected to PORT: ${PORT}`));
   })
   .catch((err) => console.log(err));

@@ -168,7 +168,6 @@ function SideBar({
                       onClick={() => {
                         navigate(`/${lcText}`);
                         setActive(lcText);
-                        console.log(active);
                       }}
                       sx={{
                         backgroundColor:
