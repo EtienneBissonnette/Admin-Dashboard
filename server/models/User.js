@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema(
     state: String,
     country: String,
     occupation: String,
-    phone: String,
+    phoneNumber: String,
     transactions: Array,
     role: {
       type: String,
@@ -19,6 +19,8 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+
 
 const User = mongoose.model("User", userSchema);
 

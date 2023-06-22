@@ -1,5 +1,6 @@
 const Product = require("../models/Product");
 const ProductStats = require("../models/ProductStats");
+const User = require("../models/User");
 
 const getProducts = async (req, res) => {
   try {
@@ -16,4 +17,14 @@ const getProducts = async (req, res) => {
   }
 };
 
-module.exports = { getProducts };
+const getCustomers = async (req, res) => {
+  try {
+    const customers = await User.find({role:"user"}).select("-password")
+    res.status(200).json(customers);
+
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+module.exports = { getProducts, getCustomers };
