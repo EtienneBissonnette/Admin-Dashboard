@@ -29,7 +29,13 @@ const PORT = process.env.PORT || 5000;
 const User = require("./models/User");
 const Product = require("./models/Product");
 const ProductStats = require("./models/ProductStats");
-const { dataUser, dataProduct, dataProductStat } = require("./data/index");
+const Transaction = require("./models/Transaction");
+const {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+} = require("./data/index");
 
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -39,6 +45,8 @@ mongoose
     // User.insertMany(dataUser) //to import mock data
     // Product.insertMany(dataProduct) //to import mock data
     // ProductStats.insertMany(dataProductStat) //to import mock data
+    // Transaction.insertMany(dataTransaction) //to import mock data
+
 
     app.listen(PORT, () => console.log(`Connected to PORT: ${PORT}`));
   })
