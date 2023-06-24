@@ -73,6 +73,9 @@ const getTransactions = async (req, res) => {
   }
 };
 
+//@desc get geography data
+//@route GET /client/geography/
+//@access Private
 const getGeography = async (req, res) => {
   try {
     const users = await User.find();
