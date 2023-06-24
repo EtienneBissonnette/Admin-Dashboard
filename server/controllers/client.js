@@ -2,6 +2,7 @@ const Product = require("../models/Product");
 const ProductStats = require("../models/ProductStats");
 const User = require("../models/User");
 const Transaction = require("../models/Transaction");
+const getCountryIso3 = require("country-iso-2-to-3");
 
 //@desc get products
 //@route GET /client/products/
@@ -66,10 +67,34 @@ const getTransactions = async (req, res) => {
       name: { $regex: search, $options: "i" },
     });
 
-    res.status(200).json({transactions, total});
+    res.status(200).json({ transactions, total });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
 
-module.exports = { getProducts, getCustomers, getTransactions };
+const getGeography = async (req, res) => {
+  try {
+    const users = await User.find();
+    const mappedLocations = users.reduce((acc, { country }) => {
+      const countryISO3 = getCountryIso3(country);
+
+      if (!acc[countryISO3]) {
+        acc[countryISO3] = 0;
+      }
+
+      acc[countryISO3]++;
+      return acc;
+    }, {});
+
+    const formatedLocations = Object.entries(mappedLocations).map(
+      ([country, count]) => ({ id: country, value: count })
+    );
+
+    res.status(200).json(formatedLocations);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+module.exports = { getProducts, getCustomers, getTransactions, getGeography };
