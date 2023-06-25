@@ -30,11 +30,13 @@ const User = require("./models/User");
 const Product = require("./models/Product");
 const ProductStats = require("./models/ProductStats");
 const Transaction = require("./models/Transaction");
+const OverallStats = require("./models/OverallStats");
 const {
   dataUser,
   dataProduct,
   dataProductStat,
   dataTransaction,
+  dataOverallStat,
 } = require("./data/index");
 
 mongoose
@@ -46,7 +48,7 @@ mongoose
     // Product.insertMany(dataProduct) //to import mock data
     // ProductStats.insertMany(dataProductStat) //to import mock data
     // Transaction.insertMany(dataTransaction) //to import mock data
-
+    // OverallStats.insertMany(dataOverallStat); //to import mock data
 
     app.listen(PORT, () => console.log(`Connected to PORT: ${PORT}`));
   })
