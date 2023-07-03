@@ -82,7 +82,7 @@ const BreakdownChart = ({ isDashboard = false }) => {
           from: "color",
           modifiers: [["darker", 0.2]],
         }}
-        disableArcLinkLabels={!isDashboard}
+        enableArcLinkLabels={!isDashboard}
         arcLinkLabelsSkipAngle={10}
         arcLinkLabelsTextColor={theme.palette.secondary[200]}
         arcLinkLabelsThickness={2}
@@ -95,11 +95,11 @@ const BreakdownChart = ({ isDashboard = false }) => {
         legends={[
           {
             anchor: "bottom",
-            direction: "row",
+            direction: isDashboard ? "column" : "row",
             justify: false,
             translateX: isDashboard ? 20 : 0,
-            translateY: isDashboard ? 50 : 56,
-            itemsSpacing: 8,
+            translateY: isDashboard ? 100 : 56,
+            itemsSpacing: isDashboard ? 4 : 8,
             itemWidth: 85,
             itemHeight: 18,
             itemTextColor: "#999",
