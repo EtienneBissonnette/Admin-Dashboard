@@ -41,7 +41,7 @@ const Monthly = () => {
 
   return (
     <Box margin="1.5rem 2.5rem">
-      <Header title="DAILY SALES" subtitle="Chart of daily sales"></Header>
+      <Header title="MONTHLY SALES" subtitle="Chart of monthly sales"></Header>
 
       <Box height="75vh">
         {data ? (
@@ -91,7 +91,7 @@ const Monthly = () => {
               reverse: false,
             }}
             yFormat=" >-.2f"
-            curve="catmullRom"
+            curve="linear"
             axisTop={null}
             axisRight={null}
             axisBottom={{

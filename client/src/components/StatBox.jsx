@@ -1,16 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  Collapse,
-  Button,
-  Typography,
-  Rating,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import FlexBetween from "./FlexBetween";
 
 const StatBox = ({ title, value, increase, icon, description }) => {
@@ -42,7 +31,7 @@ const StatBox = ({ title, value, increase, icon, description }) => {
         {value}
       </Typography>
 
-      <FlexBetween sx={{gap:"30px"}}>
+      <FlexBetween sx={{ gap: "30px" }}>
         <Typography
           variant="h5"
           fontStyle="italic"

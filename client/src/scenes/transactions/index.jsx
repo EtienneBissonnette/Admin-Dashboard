@@ -43,7 +43,7 @@ const Transactions = () => {
   return (
     <Box margin="1.5rem">
       <Header
-        title="Transactions"
+        title="TRANSACTIONS"
         subtitle="Below is the list of transactions"
       ></Header>
       <Box
